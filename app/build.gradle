@@ -1,12 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
     namespace 'com.nader.marvelheroes'
     compileSdk 33
-
+    flavorDimensions "base"
     defaultConfig {
         applicationId "com.nader.marvelheroes"
         minSdk 24
@@ -22,7 +24,24 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
     }
+
+    productFlavors {
+        Default {
+            dimension "base"
+            applicationIdSuffix ".base"
+            versionNameSuffix "-base"
+
+            buildConfigField "String", "BASE_URL", '"http://gateway.marvel.com/"'
+            buildConfigField "String", "PUBLIC_KEY", '"137bf7a1a9e2b753c80ad29ccf88c3f4"'
+            buildConfigField "String", "PRIVATE_KEY", '"04cbd82fa680404a59a6d17912cb63a5370e4ae1"'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -30,15 +49,59 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    def retrofit_version = "2.9.0"
+    def ktx_core = "1.9.0"
+    def appCompat = "1.6.0"
+    def material = "1.8.0"
+    def constraintLayout = "2.1.4"
+    def coroutines = "1.6.4"
+    def hilt = "2.44.2"
+    def glide = "4.14.2"
+    def jUnit = "4.13.2"
+    def jUnitImpl = "1.1.5"
+    def espresso = "3.5.1"
+    def lifecycleExt = "2.2.0"
+    def navFragment = "2.5.3"
+    def livedata = "2.5.1"
+    def retrofitRetry = "1.0.0"
+    def retrofit = "5.0.0-alpha.4"
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation "androidx.core:core-ktx:$ktx_core"
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "com.google.dagger:hilt-android:$hilt"
+    kapt "com.google.dagger:hilt-compiler:$hilt"
+
+    //interceptor okhttp
+    implementation group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: "$retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$retrofit"
+    implementation "com.lembergsolutions:retrofitretry:$retrofitRetry"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExt"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navFragment"
+    implementation "androidx.navigation:navigation-ui-ktx:$navFragment"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata"
+
+    implementation "com.github.bumptech.glide:glide:$glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide"
+
+    testImplementation "junit:junit:$jUnit"
+    androidTestImplementation "androidx.test.ext:junit:$jUnitImpl"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 }

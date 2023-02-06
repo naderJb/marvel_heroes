@@ -8,7 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
-    <color name="defaultTextColor">#FF000000</color>
-    <color name="secondaryTextColor">#484848</color>
+    <color name="defaultTextColor">#FFFFFFFF</color>
+    <color name="secondaryTextColor">#959595</color>
 </resources>
