@@ -7,26 +7,23 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/home.header.logo.width"
         android:layout_height="wrap_content"
         android:padding="@dimen/home.header.padding.8"
-        android:scaleType="fitStart"
         android:src="@drawable/bg_marvel_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <ImageView
-        android:id="@+id/ivSearch"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/home.header.margin.8"
+        android:maxWidth="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ivLogo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_search"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivSwitchTheme"
@@ -34,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/home.header.margin.8"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivSearch"
+        app:layout_constraintEnd_toStartOf="@+id/svSearch"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_theme_switch" />
 

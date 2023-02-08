@@ -53,6 +53,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -73,6 +74,7 @@ dependencies {
     def livedata = "2.5.1"
     def retrofitRetry = "1.0.0"
     def retrofit = "5.0.0-alpha.4"
+    def lottieVersion = "3.4.0"
 
     implementation "androidx.core:core-ktx:$ktx_core"
     implementation "androidx.appcompat:appcompat:$appCompat"
@@ -100,6 +102,8 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:$glide"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
+
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
     testImplementation "junit:junit:$jUnit"
     androidTestImplementation "androidx.test.ext:junit:$jUnitImpl"
