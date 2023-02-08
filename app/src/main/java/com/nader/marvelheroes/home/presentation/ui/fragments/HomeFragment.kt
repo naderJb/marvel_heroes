@@ -1,18 +1,14 @@
 package com.nader.marvelheroes.home.presentation.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.nader.marvelheroes.core.base.BaseFragment
 import com.nader.marvelheroes.core.extensions.onTextChangedListener
-import com.nader.marvelheroes.core.extensions.safe
-import com.nader.marvelheroes.core.extensions.showToast
 import com.nader.marvelheroes.core.model.DataStatus
 import com.nader.marvelheroes.core.utils.Throttler
 import com.nader.marvelheroes.databinding.FragmentHomeBinding
@@ -88,7 +84,6 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean) = apply { binding.laLoading.isGone = isLoading.not() }
     private fun showLoading(isLoading: Boolean) =
         apply { binding.laLoading.isGone = isLoading.not() }
 
