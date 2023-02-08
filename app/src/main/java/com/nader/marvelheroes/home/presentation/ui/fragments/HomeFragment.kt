@@ -89,6 +89,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun showLoading(isLoading: Boolean) = apply { binding.laLoading.isGone = isLoading.not() }
+    private fun showLoading(isLoading: Boolean) =
+        apply { binding.laLoading.isGone = isLoading.not() }
 
     override fun onDestroyView() {
         super.onDestroyView()

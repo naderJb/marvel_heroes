@@ -34,7 +34,7 @@ fun Context.showToast(message: String, success: Boolean = true) {
             if (success) R.drawable.ic_toast_success else R.drawable.ic_toast_error
         ), null, null, null
     )
-    binding.cardToast.setBackgroundColor(
+    binding.clToast.setBackgroundColor(
         ContextCompat.getColor(
             this,
             if (success) R.color.softGreen else R.color.grapefruit
