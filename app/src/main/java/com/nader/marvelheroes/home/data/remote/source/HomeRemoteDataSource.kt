@@ -4,5 +4,7 @@ import com.nader.marvelheroes.core.model.CommonResponse
 import com.nader.marvelheroes.home.data.model.CharacterModel
 
 interface HomeRemoteDataSource {
-    suspend fun getAllCharacters(): CommonResponse<List<CharacterModel>>
+    suspend fun getAllCharacters(
+        nameStartsWith: String?
+    ): CommonResponse<List<CharacterModel>>
 }

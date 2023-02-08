@@ -6,5 +6,7 @@ import com.nader.marvelheroes.home.data.model.CharacterModel
 import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
-    suspend fun getAllCharacters(): Flow<APIResponse<CommonResponse<List<CharacterModel>>>>
+    suspend fun getAllCharacters(
+        nameStartsWith: String?
+    ): Flow<APIResponse<CommonResponse<List<CharacterModel>>>>
 }

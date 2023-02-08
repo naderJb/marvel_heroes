@@ -5,10 +5,13 @@ import com.nader.marvelheroes.core.model.CommonResponse
 import com.nader.marvelheroes.home.data.model.CharacterModel
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface HomeService {
 
     @RetryOnError(10)
     @GET("/v1/public/characters")
-    suspend fun getAllCharacters(): Response<CommonResponse<List<CharacterModel>>>
+    suspend fun getAllCharacters(
+        @Query("nameStartsWith") nameStartsWith: String?
+    ): Response<CommonResponse<List<CharacterModel>>>
 }

@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import com.nader.marvelheroes.core.base.BaseFragment
+import com.nader.marvelheroes.core.extensions.isNotEmptyOrNull
 import com.nader.marvelheroes.core.extensions.onTextChangedListener
+import com.nader.marvelheroes.core.extensions.safe
 import com.nader.marvelheroes.core.model.DataStatus
 import com.nader.marvelheroes.core.utils.Throttler
 import com.nader.marvelheroes.databinding.FragmentHomeBinding
@@ -61,7 +63,7 @@ class HomeFragment : BaseFragment() {
 
         binding.header.svSearch.onTextChangedListener {
             throttler.throttle {
-
+                homeViewModel.getCategories(it.isNotEmptyOrNull())
             }
         }
     }

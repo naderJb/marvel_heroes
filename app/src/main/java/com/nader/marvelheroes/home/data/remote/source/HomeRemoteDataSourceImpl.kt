@@ -11,10 +11,10 @@ import javax.inject.Inject
 class HomeRemoteDataSourceImpl @Inject constructor(
     private val service: HomeService
 ) : HomeRemoteDataSource {
-    override suspend fun getAllCharacters(): CommonResponse<List<CharacterModel>> =
+    override suspend fun getAllCharacters(nameStartsWith: String?): CommonResponse<List<CharacterModel>> =
         withContext(Dispatchers.IO) {
             try {
-                val response = service.getAllCharacters()
+                val response = service.getAllCharacters(nameStartsWith)
                 response.dataOrException("Cannot get characters")
             } catch (exception: Exception) {
                 throw exception

@@ -20,3 +20,5 @@ fun String.injectQueries() = Uri.parse(this)
     .appendQueryParameter("hash", CommonUtils.getApiHash())
     .build()
     .toString()
+
+fun String?.isNotEmptyOrNull() = this?.ifEmpty { null }

@@ -10,6 +10,8 @@ import javax.inject.Inject
 class HomeUseCaseImpl @Inject constructor(
     private val homeRepository: HomeRepository
 ) : HomeUseCase {
-    override suspend fun getAllCharacters(): Flow<APIResponse<CommonResponse<List<CharacterModel>>>> =
-        homeRepository.getAllCharacters()
+    override suspend fun getAllCharacters(
+        nameStartsWith: String?
+    ): Flow<APIResponse<CommonResponse<List<CharacterModel>>>> =
+        homeRepository.getAllCharacters(nameStartsWith)
 }
