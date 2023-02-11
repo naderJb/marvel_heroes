@@ -77,6 +77,9 @@ dependencies {
     def retrofitRetry = "1.0.0"
     def retrofit = "5.0.0-alpha.4"
     def lottieVersion = "3.4.0"
+    def palette = "1.0.0"
+    def shimmer = "0.5.0"
+    def prefs = "0.5.0"
 
     implementation "androidx.core:core-ktx:$ktx_core"
     implementation "androidx.appcompat:appcompat:$appCompat"
@@ -106,8 +109,10 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 
     implementation "com.airbnb.android:lottie:$lottieVersion"
-    implementation "androidx.palette:palette-ktx:1.0.0"
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation "androidx.palette:palette-ktx:$palette"
+    implementation "com.facebook.shimmer:shimmer:$shimmer"
+
+    implementation "androidx.security:security-crypto:1.1.0-alpha04"
 
     testImplementation "junit:junit:$jUnit"
     androidTestImplementation "androidx.test.ext:junit:$jUnitImpl"

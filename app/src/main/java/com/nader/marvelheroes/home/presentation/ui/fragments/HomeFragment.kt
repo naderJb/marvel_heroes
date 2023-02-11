@@ -12,6 +12,7 @@ import com.nader.marvelheroes.core.base.BaseFragment
 import com.nader.marvelheroes.core.extensions.isNotEmptyOrNull
 import com.nader.marvelheroes.core.extensions.onTextChangedListener
 import com.nader.marvelheroes.core.model.DataStatus
+import com.nader.marvelheroes.core.utils.Prefs
 import com.nader.marvelheroes.core.utils.Throttler
 import com.nader.marvelheroes.databinding.FragmentHomeBinding
 import com.nader.marvelheroes.home.presentation.ui.adapters.CharactersAdapter
@@ -30,6 +31,7 @@ class HomeFragment : BaseFragment() {
     lateinit var adapter: CharactersAdapter
 
     private val throttler: Throttler by lazy { Throttler() }
+    private val prefs: Prefs by lazy { Prefs(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -49,7 +51,7 @@ class HomeFragment : BaseFragment() {
     private fun initViews() {
         binding.rvCharacters.adapter = adapter
         homeViewModel.getCategories()
-
+        AppCompatDelegate.setDefaultNightMode(prefs.getTheme())
     }
 
     private fun initListeners() {
@@ -59,6 +61,7 @@ class HomeFragment : BaseFragment() {
                 else -> AppCompatDelegate.MODE_NIGHT_YES
             }
             AppCompatDelegate.setDefaultNightMode(nightMode)
+            prefs.setTheme(nightMode)
         }
 
         binding.header.svSearch.onTextChangedListener {
