@@ -6,7 +6,6 @@ import com.lembergsolutions.retrofitretry.implementation.RetrofitRetryCallAdapte
 import com.nader.marvelheroes.BuildConfig
 import com.nader.marvelheroes.core.interceptors.AppSecretsInterceptor
 import com.nader.marvelheroes.core.interceptors.NetworkConnectionInterceptor
-import com.nader.marvelheroes.core.interceptors.RetryInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,9 +35,7 @@ class NetworkModule {
             .writeTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(appSecretsInterceptor)
             .addInterceptor(networkConnectionInterceptor)
-//            .addInterceptor(retryInterceptor)
-
-        if (BuildConfig.DEBUG) builder.addInterceptor(loggingInterceptor)
+            .addInterceptor(loggingInterceptor)
 
         return builder.build()
     }
@@ -59,7 +56,7 @@ class NetworkModule {
     @Singleton
     fun loggingInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.BODY)
+        interceptor.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
         return interceptor
     }
 

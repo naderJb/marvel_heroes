@@ -12,10 +12,10 @@ import com.nader.marvelheroes.home.data.model.ThumbnailModel
 fun ShapeableImageView.loadImage(thumbnail: ThumbnailModel?) {
     Glide
         .with(context)
-        .load(thumbnail?.let { it.path + "." + it.extension })
-        .placeholder(R.drawable.ic_search)
-        .error(R.drawable.ic_search)
-        .fallback(R.drawable.ic_search)
+        .load(thumbnail?.getImage())
+        .placeholder(R.drawable.bg_marvel_icon)
+        .error(R.drawable.bg_marvel_icon)
+        .fallback(R.drawable.bg_marvel_icon)
         .into(this)
 }
 

@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.nader.marvelheroes.core.base.BaseFragment
 import com.nader.marvelheroes.core.extensions.isNotEmptyOrNull
 import com.nader.marvelheroes.core.extensions.onTextChangedListener
-import com.nader.marvelheroes.core.extensions.safe
 import com.nader.marvelheroes.core.model.DataStatus
 import com.nader.marvelheroes.core.utils.Throttler
 import com.nader.marvelheroes.databinding.FragmentHomeBinding
@@ -66,6 +66,11 @@ class HomeFragment : BaseFragment() {
                 homeViewModel.getCategories(it.isNotEmptyOrNull())
             }
         }
+        adapter.setOnItemClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToCharactersFragment(it)
+            )
+        }
     }
 
     private fun initObservers() {
@@ -87,7 +92,10 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun showLoading(isLoading: Boolean) =
-        apply { binding.laLoading.isGone = isLoading.not() }
+        apply {
+            binding.laLoading.isGone = isLoading.not()
+            binding.rvCharacters.isGone = isLoading
+        }
 
     override fun onDestroyView() {
         super.onDestroyView()
