@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="text.size.13">13sp</dimen>
+    <dimen name="text.size.18">18sp</dimen>
+    <dimen name="text.size.22">22sp</dimen>
+
+    <dimen name="home.header.logo.width">80dp</dimen>
     <dimen name="home.header.height">50dp</dimen>
     <dimen name="home.header.padding.8">8dp</dimen>
     <dimen name="home.header.margin.8">8dp</dimen>
+
+
+    <dimen name="home.characters.toolbar.height">300dp</dimen>
+
+    <dimen name="default.padding.15">15dp</dimen>
+    <dimen name="default.margin.15">15dp</dimen>
+    <dimen name="default.margin.10">10dp</dimen>
+
+    <dimen name="item.character.height">30dp</dimen>
+
+    <dimen name="item.publication.margin.50">50dp</dimen>
+    <dimen name="item.publication.image.width">150dp</dimen>
+    <dimen name="item.publication.image.height">250dp</dimen>
+    <dimen name="item.publication.corner.size">20dp</dimen>
+
+    <dimen name="item.shimmer.margin.25">25dp</dimen>
+    <dimen name="item.shimmer.text.width">150dp</dimen>
+    <dimen name="item.shimmer.text.height">30dp</dimen>
 </resources>

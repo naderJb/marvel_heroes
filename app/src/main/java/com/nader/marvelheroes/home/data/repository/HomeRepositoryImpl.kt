@@ -11,11 +11,11 @@ import javax.inject.Inject
 class HomeRepositoryImpl @Inject constructor(
     private val homeRemoteDataSource: HomeRemoteDataSource
 ) : HomeRepository {
-    override suspend fun getAllCharacters(): Flow<APIResponse<CommonResponse<List<CharacterModel>>>> =
+    override suspend fun getAllCharacters(nameStartsWith: String?): Flow<APIResponse<CommonResponse<List<CharacterModel>>>> =
         flow {
             emit(APIResponse.loading())
             try {
-                val response = homeRemoteDataSource.getAllCharacters()
+                val response = homeRemoteDataSource.getAllCharacters(nameStartsWith)
                 emit(APIResponse.success(response))
             } catch (e: Exception) {
                 emit(APIResponse.error(e))

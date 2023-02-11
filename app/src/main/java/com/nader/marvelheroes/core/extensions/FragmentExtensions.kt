@@ -10,3 +10,7 @@ fun Fragment.delayOnLifecycle(
     dispatchers: CoroutineDispatcher = Dispatchers.Main,
     block: () -> Unit
 ): Job = requireActivity().delayOnLifecycle(durationInMillis, dispatchers, block)
+
+fun Fragment.setWindowsColor(color: Int) {
+    requireActivity().window.statusBarColor = color
+}

@@ -19,9 +19,9 @@ class HomeViewModel @Inject constructor(
     var status = MutableLiveData<SingleEvent<DataStatus>>()
     var characters = MutableLiveData<List<CharacterModel>>()
 
-    fun getCategories() {
+    fun getCategories(nameStartsWith: String? = null) {
         viewModelScope.launch {
-            homeUseCase.getAllCharacters().collect { response ->
+            homeUseCase.getAllCharacters(nameStartsWith).collect { response ->
                 when (response.status) {
                     Status.SUCCESS -> {
                         status.postValue(SingleEvent(DataStatus.DataLoaded))
