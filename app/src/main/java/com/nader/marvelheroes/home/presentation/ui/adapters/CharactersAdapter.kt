@@ -12,6 +12,13 @@ class CharactersAdapter @Inject constructor() :
     RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder>() {
     private var characters: ArrayList<CharacterModel> = ArrayList()
 
+    private var onItemClickListener: ((CharacterModel) -> Unit)? = null
+
+
+    fun setOnItemClickListener(listener: (CharacterModel) -> Unit) {
+        onItemClickListener = listener
+    }
+
     fun addData(allCharacters: ArrayList<CharacterModel>) {
         characters = allCharacters
         notifyDataSetChanged()
@@ -20,9 +27,7 @@ class CharactersAdapter @Inject constructor() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder =
         CharacterViewHolder(
             ItemCharacterBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
 
@@ -36,6 +41,7 @@ class CharactersAdapter @Inject constructor() :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(characterModel: CharacterModel) {
             binding.hero = characterModel
+            binding.root.setOnClickListener { onItemClickListener?.invoke(characterModel) }
         }
 
     }

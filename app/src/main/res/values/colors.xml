@@ -10,6 +10,8 @@
     <color name="waterMelon">#ff4e63</color>
     <color name="softGreen">#7acf6b</color>
     <color name="grapefruit">#ff6358</color>
+    <color name="marvelRed">#BC0C00</color>
+    <color name="softGrey">#D1D1D1</color>
 
     <color name="defaultTextColor">#FF000000</color>
     <color name="secondaryTextColor">#484848</color>

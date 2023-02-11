@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id("kotlin-parcelize")
 }
 
 android {
@@ -104,6 +106,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 
     implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "androidx.palette:palette-ktx:1.0.0"
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     testImplementation "junit:junit:$jUnit"
     androidTestImplementation "androidx.test.ext:junit:$jUnitImpl"
